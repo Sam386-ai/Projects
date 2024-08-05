@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demon STUO</title>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f3;
+      font-family: 'Chakra Petch', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 15px 20px;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .header-item {
+      color: #ff4500;
+      margin: 0;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      font-size: 20px;
+      padding: 0 15px;
+    }
+
+    .header-item:hover {
+      color: #ff0000;
+      text-shadow: none;
+    }
+
+    .content-section {
+      display: none;
+      padding: 60px 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .content-section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .content-section h1 {
+      color: #111;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #home {
+      background-color: white;
+      text-align: center;
+    }
+
+    #contact {
+      background-color: #e8f4f8;
+    }
+
+    #projects {
+      background-color: #fff3e6;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff4500;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background-color: #ff0000;
+    }
+
+    .hero-section {
+      background: url(Stuo.png) no-repeat center center/cover;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      cursor: default;
+      box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 5px 5px 20px rgb(252, 0, 0);
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-section button {
+      padding: 10px 20px;
+      background-color: #ff4500;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-section button:hover {
+      background-color: #ff0000;
+    }
+
+    .about-section, .Services, .contact-section,.project-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .about-section h2, .Services h2, .contact-section h2,.project-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .about-section p, .Services p, .contact-section p,.project-section p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-item {
+        padding: 10px 0;
+      }
+
+      .form-container {
+        width: 90%;
+      }
+
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="header-item" data-section="home">Demon STUO</h1>
+    <div>
+      <span class="header-item" data-section="contact">Contact</span>
+      <span class="header-item" data-section="projects">Projects</span>
+      <span class="header-item" data-section="login">Login</span>
+      <span class="header-item" data-section="signup">Signup</span>
+    </div>
+  </header>
+
+  <div id="home" class="content-section active">
+    <div class="hero-section">
+      <div>
+        <h1>Welcome to Demon STUO</h1>
+        <p>Innovative Solutions for a Modern World</p>
+        <button id="explore-projects">Explore Our Projects</button>
+      </div>
+    </div>
+    <div class="about-section">
+      <h2>About Us</h2>
+      <p>
+        At Demon STUO, we specialize in delivering cutting-edge solutions tailored to meet the unique needs of our clients. Our team of experts is dedicated to pushing the boundaries of technology and innovation to bring you the best in the industry.
+      </p>
+    </div>
+    <div class="Services">
+      <h2>Our Services</h2>
+      <p>
+        We offer a wide range of services, including web development, mobile app development, digital marketing, and more. Our goal is to help you achieve your business objectives through innovative and effective solutions.
+      </p>
+    </div>
+  </div>
+
+  <div id="contact" class="content-section">
+    <h1>Contact Us</h1>
+    <div class="contact-section">
+      <h2>Get in Touch</h2>
+      <p>You can reach us at <a href="mailto:darksaman71@gmail.com">darksaman71@gmail.com</a>.</p>
+      <p>Follow us on social media for the latest updates and news.</p>
+      <p>
+        <a href="https://facebook.com" target="_blank">Facebook</a> | 
+        <a href="https://twitter.com" target="_blank">Twitter</a> | 
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="projects" class="content-section">
+    <h1>Our Projects</h1>
+    <div class="project-section">
+      <h2>Project Showcase</h2>
+      <p>
+        Here you will find a showcase of our latest projects. From innovative apps to robust web solutions, we take pride in our work and are excited to share our successes with you.
+      </p>
+    </div>
+  </div>
+
+  <div id="login" class="content-section">
+    <div class="form-container">
+      <h1>Login</h1>
+      <input type="text" id="login-username" placeholder="Username" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button onclick="login()">Login</button>
+    </div>
+  </div>
+
+  <div id="signup" class="content-section">
+    <div class="form-container">
+      <h1>Signup</h1>
+      <input type="text" id="signup-username" placeholder="Username" required>
+      <input type="password" id="signup-password" placeholder="Password" required>
+      <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+      <button onclick="signup()">Signup</button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.header-item').forEach(link => {
+      link.addEventListener('click', function() {
+        const targetSection = this.getAttribute('data-section');
+        
+        // Hide all sections
+        document.querySelectorAll('.content-section').forEach(section => {
+          section.classList.remove('active');
+        });
+
+        // Show the target section
+        document.getElementById(targetSection).classList.add('active');
+        
+        // Scroll to the target section
+        document.getElementById(targetSection).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Show the home section by default
+    document.getElementById('home').classList.add('active');
+
+    document.getElementById('explore-projects').addEventListener('click', function() {
+      console.log('Explore Projects button clicked');
+
+      // Hide all sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Show the projects section
+      const projectsSection = document.getElementById('projects');
+      projectsSection.classList.add('active');
+
+      // Scroll to the projects section
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+
+      // Log the visibility status of the projects section
+      console.log('Projects section active:', projectsSection.classList.contains('active'));
+    });
+
+    function login() {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+      
+      // For demonstration purposes, this is a simple check.
+      // In a real application, you would send a request to the server for authentication.
+      if (username === "user" && password === "password") {
+        alert('Login successful');
+        // Redirect or update UI here
+      } else {
+        alert('Invalid username or password');
+      }
+    }
+
+    function signup() {
+      const username = document.getElementById('signup-username').value;
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-confirm-password').value;
+      
+      if (password === confirmPassword) {
+        alert('Signup successful');
+        // Redirect or update UI here
+      } else {
+        alert('Passwords do not match');
+      }
+    }
+
+    const rev = ScrollReveal({
+      distance: '200px',
+      delay: 200
+    });
+
+    rev.reveal('.hero-section', { origin: 'left' });
+    rev.reveal('.display', { origin: 'top' });
+    rev.reveal('.project-showcase-section', { origin: 'top', delay: 100, interval: 100 });
+    rev.reveal('.about-section', { origin: 'top', delay: 100, interval: 100 });
+    rev.reveal('header', { origin: 'top' });
+  </script>
+</body>
+</html>

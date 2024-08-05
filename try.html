@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Page Application</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+section {
+  padding: 5rem 1rem;
+  height: 100vh;
+  display: none; /* Hide all sections by default */
+}
+
+section.active {
+  display: block; /* Only display the active section */
+}
+
+  </style>
+  
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home" data-section="home" class="nav-link">Home</a></li>
+        <li><a href="about" data-section="about" class="nav-link">About</a></li>
+        <li><a href="portfolio" data-section="portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="expirence" data-section="experience" class="nav-link">Experience</a></li>
+        <li><a href="contact" data-section="contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="content-section">
+    <h1>Home</h1>
+    <!-- Content for Home -->
+  </section>
+  
+  <section id="about" class="content-section" style="display: none;">
+    <h1>About</h1>
+    <!-- Content for About -->
+  </section>
+  
+  <section id="portfolio" class="content-section" style="display: none;">
+    <h1>Portfolio</h1>
+    <!-- Content for Portfolio -->
+  </section>
+  
+  <section id="experience" class="content-section" style="display: none;">
+    <h1>Experience</h1>
+    <!-- Content for Experience -->
+  </section>
+  
+ 
+
+  <script>
+    document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetSection = this.getAttribute('data-section');
+    
+    // Hide all sections
+    document.querySelectorAll('.content-section').forEach(section => {
+      section.style.display = 'none';
+    });
+    
+    // Show the target section
+    document.getElementById(targetSection).style.display = 'block';
+  });
+});
+
+// Show the home section by default
+document.getElementById('home').style.display = 'block';
+
+  </script>
+</body>
+</html>
